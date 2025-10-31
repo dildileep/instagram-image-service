@@ -1,33 +1,29 @@
-# Image Service (Lambda + API Gateway + S3 + DynamoDB)
+# 📸 Instagram Image Service (Lambda + API Gateway + S3 + DynamoDB)
 
-## Prerequisites
-- AWS CLI configured with credentials
-- AWS SAM CLI installed
-- Python 3.7+
-- Docker (optional for sam build)
+A fully serverless image management backend built on AWS. This service allows you to upload images using **S3 presigned URLs**, and manage image metadata (like tags, descriptions, and user IDs) via a REST API.
 
-## Build & Deploy (SAM)
+---
 
-1. Clone repo and cd into folder:
-   ```bash
-   cd instagram-image-service
-Build:
+## ✅ Prerequisites
+
+Before deploying, ensure you have the following installed and configured:
+
+- ✅ [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) with valid credentials  
+- ✅ [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)  
+- ✅ Python 3.7+  
+- ✅ [jq](https://stedolan.github.io/jq/) (for parsing JSON in bash scripts):  
+
+```bash
+# Install jq
+sudo apt install jq       # Ubuntu/Debian
+brew install jq           # macOS
+
+
+git clone https://github.com/dildileep/instagram-image-service.git
+cd instagram-image-service
 
 
 sam build
-Deploy (guided):
+
 
 sam deploy --guided
-During --guided set:
-
-Stack Name: image-service
-
-AWS Region: e.g. us-east-1
-
-Confirm changesets: yes
-
-Allow SAM to create roles: yes
-
-Save arguments to samconfig: yes (optional)
-
-After deploy, SAM prints the ApiUrl output, e.g. https://xxxxx.execute-api.us-east-1.amazonaws.com/Prod
